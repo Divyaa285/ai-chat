@@ -379,7 +379,7 @@ REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
 
 ## Backend Integration
 
-This frontend expects a backend API running at the URL defined in `REACT_APP_BACKEND_URLL`.
+This frontend expects a backend API running at the URL defined in `REACT_APP_BACKEND_URL`.
 
 Ensure the backend server is running before starting the frontend:
 
