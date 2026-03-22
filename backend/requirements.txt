@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic-settings
+google-generativeai
+sqlalchemy
+psycopg2-binary
+python-jose[cryptography]
+google-auth
+google-auth-oauthlib
+requests
+pydantic
+alembic
