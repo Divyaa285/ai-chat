@@ -270,3 +270,156 @@ A global middleware catches any unhandled exception, persists it to the `logs` t
 - Interactive API docs are available at `http://localhost:8000/docs` (Swagger UI) and `http://localhost:8000/redoc`.
 - The server auto-creates all database tables on startup via `Base.metadata.create_all()`. Use Alembic for schema migrations in production.
 - CORS is pre-configured for `http://localhost:3000` (typical React dev server). Update `ALLOWED_ORIGINS` in `.env` for other origins.
+
+
+
+# AI Chat Frontend
+
+A production-ready React application providing a modern chat interface with AI-powered responses, Google OAuth authentication, and rich Markdown rendering.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Backend Integration](#backend-integration)
+- [Google OAuth Setup](#google-oauth-setup)
+- [Available Scripts](#available-scripts)
+- [How It Works](#how-it-works)
+
+
+---
+
+## Features
+
+- **Interactive Chat UI** — Smooth, responsive chat interface optimized for real-time conversation
+- **AI-Generated Responses** — Integrated with a backend AI model via REST API
+- **Google OAuth Authentication** — Secure, one-click login via Google Identity
+- **Markdown Rendering** — Full Markdown support for formatted AI responses (code blocks, tables, lists)
+- **Session Management** — Persistent chat session handling across page interactions
+- **File Attachments** — Support for file uploads within conversations *(in development)*
+
+---
+
+## Tech Stack
+
+| Technology | Version | Purpose |
+|---|---|---|
+| React | 18.x | UI framework |
+| React Router DOM | latest | Client-side routing |
+| Axios | latest | HTTP client |
+| React Markdown | latest | Markdown rendering |
+| @react-oauth/google | latest | Google OAuth integration |
+
+---
+
+## Project Structure
+
+```
+frontend/
+├── public/                 # Static assets
+└── src/
+    ├── components/         # Reusable UI components
+    ├── pages/              # Route-level page components
+    ├── styles/             # Global and component styles
+    ├── App.js              # Root application component
+    └── index.js            # Application entry point
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v16 or higher
+- npm v8 or higher
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd frontend
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root (see [Environment Variables](#environment-variables)).
+
+### 4. Start the Development Server
+
+```bash
+npm start
+```
+
+The app will be available at `http://localhost:3000`.
+
+---
+
+## Environment Variables
+
+Replace `.env.example ` to `.env` file in the project root with the following variables:
+
+```env
+REACT_APP_BACKEND_URL=http://localhost:8000
+REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
+```
+
+---
+
+## Backend Integration
+
+This frontend expects a backend API running at the URL defined in `REACT_APP_BACKEND_URLL`.
+
+Ensure the backend server is running before starting the frontend:
+
+```
+http://localhost:8000
+```
+
+Refer to the backend repository for setup instructions.
+
+---
+
+## Google OAuth Setup
+
+1. Visit the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create or select a project
+3. Navigate to **APIs & Services → Credentials**
+4. Create an **OAuth 2.0 Client ID** (Web Application)
+5. Add `http://localhost:3000` as an authorized JavaScript origin
+6. Copy the generated Client ID into your `.env` file as `REACT_APP_GOOGLE_CLIENT_ID`
+
+---
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm start` | Start the development server at `http://localhost:3000` |
+| `npm run build` | Create an optimized production build in the `/build` directory |
+
+---
+
+## How It Works
+
+1. **Authentication** — The user signs in via Google OAuth
+2. **Message Input** — The user types a message in the chat interface
+3. **API Request** — The message is sent to the backend via Axios
+4. **AI Processing** — The backend processes the input through the AI model
+5. **Response Rendering** — The response is streamed back and rendered with Markdown formatting
+
+---
+
+
+
